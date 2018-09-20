@@ -1,0 +1,249 @@
+Token: Separator	 Lexeme: %%
+Token: Keyword	 Lexeme: integer
+<Optional Declaration List> -> <Declaration List> | <Empty>
+<Declaration List> -> <Declaration> ; | <Declaration> ; <Declaration List>
+<Declaration> -> <Qualifier> <IDs>
+<Qualifier> -> integer | boolean
+Token: Identifier	 Lexeme: low
+<IDs> -> Identifier | Identifier , <IDs>
+Token: Separator	 Lexeme: ,
+Token: Identifier	 Lexeme: high
+<IDs> -> Identifier | Identifier , <IDs>
+Token: Separator	 Lexeme: ,
+Token: Identifier	 Lexeme: step#xy
+<IDs> -> Identifier | Identifier , <IDs>
+Token: Separator	 Lexeme: ;
+Token: Keyword	 Lexeme: boolean
+<Declaration List> -> <Declaration> ; | <Declaration> ; <Declaration List>
+<Declaration> -> <Qualifier> <IDs>
+<Qualifier> -> integer | boolean
+Token: Identifier	 Lexeme: hot
+<IDs> -> Identifier | Identifier , <IDs>
+Token: Separator	 Lexeme: ;
+Token: Keyword	 Lexeme: read
+<Statement List> -> <Statement> | <Statement> <Statement List>
+<Statement> -> <Compound> | <Assign> | <If> | <Return> | <Write> | <Read> | <While>
+<Read> -> read (<IDs>) ;
+Token: Separator	 Lexeme: (
+Token: Identifier	 Lexeme: low
+<IDs> -> Identifier | Identifier , <IDs>
+Token: Separator	 Lexeme: ,
+Token: Identifier	 Lexeme: high
+<IDs> -> Identifier | Identifier , <IDs>
+Token: Separator	 Lexeme: ,
+Token: Identifier	 Lexeme: step#xy
+<IDs> -> Identifier | Identifier , <IDs>
+Token: Separator	 Lexeme: )
+Token: Separator	 Lexeme: ;
+Token: Keyword	 Lexeme: if
+<Statement List> -> <Statement> | <Statement> <Statement List>
+<Statement> -> <Compound> | <Assign> | <If> | <Return> | <Write> | <Read> | <While>
+<If> -> if (<Condition>) <Statement> fi | if (<Condition>) <Statement> else <Statement> fi
+Token: Separator	 Lexeme: (
+Token: Identifier	 Lexeme: step#xy
+<Condition> -> <Expression> <Relop> <Expression>
+<Expression> -> <Term> <Expression'>
+<Term> -> <Factor> <Term'>
+<Factor> -> - <Primary> | <Primary>
+<Primary> -> Identifier | Integer | Identifier [<IDs>] | (<Expression>) | true | false
+Token: Operator	 Lexeme: =
+<Term'> -> * <Factor> <Term'> | / <Factor> <Term'> | <Empty>
+<Expression'> -> + <Term> <Expression'> | - <Term> <Expression'> | <Empty>
+<Relop> -> = | /= | > | < | => | <=
+Token: Identifier	 Lexeme: high
+<Expression> -> <Term> <Expression'>
+<Term> -> <Factor> <Term'>
+<Factor> -> - <Primary> | <Primary>
+<Primary> -> Identifier | Integer | Identifier [<IDs>] | (<Expression>) | true | false
+Token: Separator	 Lexeme: )
+<Term'> -> * <Factor> <Term'> | / <Factor> <Term'> | <Empty>
+<Expression'> -> + <Term> <Expression'> | - <Term> <Expression'> | <Empty>
+Token: Separator	 Lexeme: {
+<Statement> -> <Compound> | <Assign> | <If> | <Return> | <Write> | <Read> | <While>
+<Compound> -> { <Statement List> }
+Token: Keyword	 Lexeme: write
+<Statement List> -> <Statement> | <Statement> <Statement List>
+<Statement> -> <Compound> | <Assign> | <If> | <Return> | <Write> | <Read> | <While>
+<Write> -> write (<Expression>) ;
+Token: Separator	 Lexeme: (
+Token: Identifier	 Lexeme: high
+<Expression> -> <Term> <Expression'>
+<Term> -> <Factor> <Term'>
+<Factor> -> - <Primary> | <Primary>
+<Primary> -> Identifier | Integer | Identifier [<IDs>] | (<Expression>) | true | false
+Token: Separator	 Lexeme: )
+<Term'> -> * <Factor> <Term'> | / <Factor> <Term'> | <Empty>
+<Expression'> -> + <Term> <Expression'> | - <Term> <Expression'> | <Empty>
+Token: Separator	 Lexeme: ;
+Token: Separator	 Lexeme: }
+Token: Keyword	 Lexeme: else
+Token: Separator	 Lexeme: {
+<Statement> -> <Compound> | <Assign> | <If> | <Return> | <Write> | <Read> | <While>
+<Compound> -> { <Statement List> }
+Token: Keyword	 Lexeme: write
+<Statement List> -> <Statement> | <Statement> <Statement List>
+<Statement> -> <Compound> | <Assign> | <If> | <Return> | <Write> | <Read> | <While>
+<Write> -> write (<Expression>) ;
+Token: Separator	 Lexeme: (
+Token: Identifier	 Lexeme: low
+<Expression> -> <Term> <Expression'>
+<Term> -> <Factor> <Term'>
+<Factor> -> - <Primary> | <Primary>
+<Primary> -> Identifier | Integer | Identifier [<IDs>] | (<Expression>) | true | false
+Token: Separator	 Lexeme: )
+<Term'> -> * <Factor> <Term'> | / <Factor> <Term'> | <Empty>
+<Expression'> -> + <Term> <Expression'> | - <Term> <Expression'> | <Empty>
+Token: Separator	 Lexeme: ;
+Token: Separator	 Lexeme: }
+Token: Keyword	 Lexeme: fi
+Token: Identifier	 Lexeme: hot
+<Statement List> -> <Statement> | <Statement> <Statement List>
+<Statement> -> <Compound> | <Assign> | <If> | <Return> | <Write> | <Read> | <While>
+<Assign> -> Identifier := <Expression> ;
+Token: Operator	 Lexeme: :=
+Token: Keyword	 Lexeme: false
+<Expression> -> <Term> <Expression'>
+<Term> -> <Factor> <Term'>
+<Factor> -> - <Primary> | <Primary>
+<Primary> -> Identifier | Integer | Identifier [<IDs>] | (<Expression>) | true | false
+Token: Separator	 Lexeme: ;
+<Term'> -> * <Factor> <Term'> | / <Factor> <Term'> | <Empty>
+<Expression'> -> + <Term> <Expression'> | - <Term> <Expression'> | <Empty>
+Token: Keyword	 Lexeme: while
+<Statement List> -> <Statement> | <Statement> <Statement List>
+<Statement> -> <Compound> | <Assign> | <If> | <Return> | <Write> | <Read> | <While>
+<While> -> while (<Condition>) <Statement>
+Token: Separator	 Lexeme: (
+Token: Identifier	 Lexeme: low
+<Condition> -> <Expression> <Relop> <Expression>
+<Expression> -> <Term> <Expression'>
+<Term> -> <Factor> <Term'>
+<Factor> -> - <Primary> | <Primary>
+<Primary> -> Identifier | Integer | Identifier [<IDs>] | (<Expression>) | true | false
+Token: Operator	 Lexeme: <
+<Term'> -> * <Factor> <Term'> | / <Factor> <Term'> | <Empty>
+<Expression'> -> + <Term> <Expression'> | - <Term> <Expression'> | <Empty>
+<Relop> -> = | /= | > | < | => | <=
+Token: Identifier	 Lexeme: high
+<Expression> -> <Term> <Expression'>
+<Term> -> <Factor> <Term'>
+<Factor> -> - <Primary> | <Primary>
+<Primary> -> Identifier | Integer | Identifier [<IDs>] | (<Expression>) | true | false
+Token: Separator	 Lexeme: )
+<Term'> -> * <Factor> <Term'> | / <Factor> <Term'> | <Empty>
+<Expression'> -> + <Term> <Expression'> | - <Term> <Expression'> | <Empty>
+Token: Separator	 Lexeme: {
+<Statement> -> <Compound> | <Assign> | <If> | <Return> | <Write> | <Read> | <While>
+<Compound> -> { <Statement List> }
+Token: Keyword	 Lexeme: write
+<Statement List> -> <Statement> | <Statement> <Statement List>
+<Statement> -> <Compound> | <Assign> | <If> | <Return> | <Write> | <Read> | <While>
+<Write> -> write (<Expression>) ;
+Token: Separator	 Lexeme: (
+Token: Identifier	 Lexeme: low
+<Expression> -> <Term> <Expression'>
+<Term> -> <Factor> <Term'>
+<Factor> -> - <Primary> | <Primary>
+<Primary> -> Identifier | Integer | Identifier [<IDs>] | (<Expression>) | true | false
+Token: Separator	 Lexeme: )
+<Term'> -> * <Factor> <Term'> | / <Factor> <Term'> | <Empty>
+<Expression'> -> + <Term> <Expression'> | - <Term> <Expression'> | <Empty>
+Token: Separator	 Lexeme: ;
+Token: Keyword	 Lexeme: write
+<Statement List> -> <Statement> | <Statement> <Statement List>
+<Statement> -> <Compound> | <Assign> | <If> | <Return> | <Write> | <Read> | <While>
+<Write> -> write (<Expression>) ;
+Token: Separator	 Lexeme: (
+Token: Identifier	 Lexeme: high
+<Expression> -> <Term> <Expression'>
+<Term> -> <Factor> <Term'>
+<Factor> -> - <Primary> | <Primary>
+<Primary> -> Identifier | Integer | Identifier [<IDs>] | (<Expression>) | true | false
+Token: Operator	 Lexeme: +
+<Term'> -> * <Factor> <Term'> | / <Factor> <Term'> | <Empty>
+<Expression'> -> + <Term> <Expression'> | - <Term> <Expression'> | <Empty>
+Token: Identifier	 Lexeme: low
+<Term> -> <Factor> <Term'>
+<Factor> -> - <Primary> | <Primary>
+<Primary> -> Identifier | Integer | Identifier [<IDs>] | (<Expression>) | true | false
+Token: Separator	 Lexeme: )
+<Term'> -> * <Factor> <Term'> | / <Factor> <Term'> | <Empty>
+<Expression'> -> + <Term> <Expression'> | - <Term> <Expression'> | <Empty>
+Token: Separator	 Lexeme: ;
+Token: Identifier	 Lexeme: low
+<Statement List> -> <Statement> | <Statement> <Statement List>
+<Statement> -> <Compound> | <Assign> | <If> | <Return> | <Write> | <Read> | <While>
+<Assign> -> Identifier := <Expression> ;
+Token: Operator	 Lexeme: :=
+Token: Identifier	 Lexeme: low
+<Expression> -> <Term> <Expression'>
+<Term> -> <Factor> <Term'>
+<Factor> -> - <Primary> | <Primary>
+<Primary> -> Identifier | Integer | Identifier [<IDs>] | (<Expression>) | true | false
+Token: Operator	 Lexeme: +
+<Term'> -> * <Factor> <Term'> | / <Factor> <Term'> | <Empty>
+<Expression'> -> + <Term> <Expression'> | - <Term> <Expression'> | <Empty>
+Token: Identifier	 Lexeme: step#xy
+<Term> -> <Factor> <Term'>
+<Factor> -> - <Primary> | <Primary>
+<Primary> -> Identifier | Integer | Identifier [<IDs>] | (<Expression>) | true | false
+Token: Separator	 Lexeme: ;
+<Term'> -> * <Factor> <Term'> | / <Factor> <Term'> | <Empty>
+<Expression'> -> + <Term> <Expression'> | - <Term> <Expression'> | <Empty>
+Token: Keyword	 Lexeme: read
+<Statement List> -> <Statement> | <Statement> <Statement List>
+<Statement> -> <Compound> | <Assign> | <If> | <Return> | <Write> | <Read> | <While>
+<Read> -> read (<IDs>) ;
+Token: Separator	 Lexeme: (
+Token: Identifier	 Lexeme: high
+<IDs> -> Identifier | Identifier , <IDs>
+Token: Separator	 Lexeme: ,
+Token: Identifier	 Lexeme: low
+<IDs> -> Identifier | Identifier , <IDs>
+Token: Separator	 Lexeme: )
+Token: Separator	 Lexeme: ;
+Token: Separator	 Lexeme: }
+Parsing Successful!
+///////////SYMBOL TABLE//////////
+Symbol: low	 Memory Address: 10000	 Type: integer
+Symbol: high	 Memory Address: 10001	 Type: integer
+Symbol: step#xy	 Memory Address: 10002	 Type: integer
+Symbol: hot	 Memory Address: 10003	 Type: boolean
+///////////INSTRUCTION TABLE//////////
+Instruction Address: 0	 Operator:      	 Operand: 0
+Instruction Address: 1	 Operator: STDIN	 Operand: 0
+Instruction Address: 2	 Operator: POPM  	 Operand: 10000
+Instruction Address: 3	 Operator: STDIN	 Operand: 0
+Instruction Address: 4	 Operator: POPM  	 Operand: 10001
+Instruction Address: 5	 Operator: STDIN	 Operand: 0
+Instruction Address: 6	 Operator: POPM  	 Operand: 10002
+Instruction Address: 7	 Operator: PUSHM	 Operand: 10002
+Instruction Address: 8	 Operator: PUSHM	 Operand: 10001
+Instruction Address: 9	 Operator: EQU  	 Operand: 0
+Instruction Address: 10	 Operator: JUMPZ	 Operand: 13
+Instruction Address: 11	 Operator: PUSHM	 Operand: 10001
+Instruction Address: 12	 Operator: STDOUT	 Operand: 0
+Instruction Address: 13	 Operator: PUSHM	 Operand: 10000
+Instruction Address: 14	 Operator: STDOUT	 Operand: 0
+Instruction Address: 15	 Operator: POPM  	 Operand: 10003
+Instruction Address: 16	 Operator: LABEL	 Operand: 0
+Instruction Address: 17	 Operator: PUSHM	 Operand: 10000
+Instruction Address: 18	 Operator: PUSHM	 Operand: 10001
+Instruction Address: 19	 Operator: LES  	 Operand: 0
+Instruction Address: 20	 Operator: JUMPZ	 Operand: 36
+Instruction Address: 21	 Operator: PUSHM	 Operand: 10000
+Instruction Address: 22	 Operator: STDOUT	 Operand: 0
+Instruction Address: 23	 Operator: PUSHM	 Operand: 10001
+Instruction Address: 24	 Operator: PUSHM	 Operand: 10000
+Instruction Address: 25	 Operator: ADD  	 Operand: 0
+Instruction Address: 26	 Operator: STDOUT	 Operand: 0
+Instruction Address: 27	 Operator: PUSHM	 Operand: 10000
+Instruction Address: 28	 Operator: PUSHM	 Operand: 10002
+Instruction Address: 29	 Operator: ADD  	 Operand: 0
+Instruction Address: 30	 Operator: POPM  	 Operand: 10000
+Instruction Address: 31	 Operator: STDIN	 Operand: 0
+Instruction Address: 32	 Operator: POPM  	 Operand: 10001
+Instruction Address: 33	 Operator: STDIN	 Operand: 0
+Instruction Address: 34	 Operator: POPM  	 Operand: 10000
+Instruction Address: 35	 Operator: JUMP 	 Operand: 16
+Instruction Address: 36	 Operator:      	 Operand: 0

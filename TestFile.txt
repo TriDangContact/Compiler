@@ -1,0 +1,22 @@
+%%
+	integer low, high, step#xy;
+	boolean hot;
+	read(low,high,step#xy);
+	if(step#xy = high)
+	{
+		write(high);
+	}
+	else
+	{
+		write(low);
+	}
+	fi
+	hot := false;
+	while(low<high)
+	{		
+		write (low);
+		write (high + low);
+		low := low + step#xy;
+		read(high, low);
+	}	
+	
