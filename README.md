@@ -11,6 +11,6 @@ This is a rudimentary compiler that processes a source code file in a made-up la
 </ul>
 
 <h2>To run:</h2>
-- Click on the executable file OR
-- Compile using <code>javac LexicalAnalyzer.java</code> and run using <code>java LexicalAnalyzer</code>
+Click on the executable file OR
+Compile using <code>javac LexicalAnalyzer.java</code> and run using <code>java LexicalAnalyzer</code>
 
